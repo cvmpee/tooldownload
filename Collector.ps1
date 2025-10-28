@@ -1,13 +1,13 @@
 Write-Host @"
-___       ___  ___       ___  _________  ___  ___     
-|\  \     |\  \|\  \     |\  \|\___   ___\\  \|\  \    
-\ \  \    \ \  \ \  \    \ \  \|___ \  \_\ \  \\\  \   
- \ \  \    \ \  \ \  \    \ \  \   \ \  \ \ \   __  \  
-  \ \  \____\ \  \ \  \____\ \  \   \ \  \ \ \  \ \  \ 
-   \ \_______\ \__\ \_______\ \__\   \ \__\ \ \__\ \__\
-    \|_______|\|__|\|_______|\|__|    \|__|  \|__|\|__|
- Made with love by Lily<3                                                                                                             
-"@ -ForegroundColor Cyan                                               
+                                         _______          _        _____                      _                 _           
+                                        |__   __|        | |      |  __ \                    | |               | |          
+   ___ __ _ _ __ ___  _ __   ___           | | ___   ___ | |      | |  | | _____      ___ __ | | ___   __ _  __| | ___ _ __ 
+  / __/ _` | '_ ` _ \| '_ \ / _ \          | |/ _ \ / _ \| |      | |  | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |/ _ \ '__|
+ | (_| (_| | | | | | | |_) |  __/          | | (_) | (_) | |      | |__| | (_) \ V  V /| | | | | (_) | (_| | (_| |  __/ |   
+  \___\__, |_| |_| |_| .__/ \___|          |_|\___/ \___/|_|      |_____/ \___/ \_/\_/ |_| |_|_|\___/ \__,_|\__,_|\___|_|   
+         | |         | |                                                                                                    
+         |_|         |_|                                                                                                                                                                               
+"@ -ForegroundColor Red                                               
 
 Write-Host @"
 WARNING: MAKE SURE U HAVE THE SUSPECTS CONSENT BEFORE RUNNING, 
@@ -166,24 +166,10 @@ $spowksucksasscheeks = @(
     @{ Name="Activities Cache Parser"; Url="https://github.com/spokwn/ActivitiesCache-execution/releases/download/v0.6.5/ActivitiesCacheParser.exe"; File="ActivitiesCacheParser.exe" }
 )
 
-$zimmermanTools = @(
-    @{ Name="AmcacheParser"; Url="https://download.ericzimmermanstools.com/net9/AmcacheParser.zip"; File="AmcacheParser.zip" },
-    @{ Name="AppCompatCacheParser"; Url="https://download.ericzimmermanstools.com/net9/AppCompatCacheParser.zip"; File="AppCompatCacheParser.zip" },
-    @{ Name="JumpListExplorer"; Url="https://download.ericzimmermanstools.com/net9/JumpListExplorer.zip"; File="JumpListExplorer.zip" },
-    @{ Name="bstrings"; Url="https://download.ericzimmermanstools.com/net9/bstrings.zip"; File="bstrings.zip" },
-    @{ Name="PECmd"; Url="https://download.ericzimmermanstools.com/net9/PECmd.zip"; File="PECmd.zip" },
-    @{ Name="SrumECmd"; Url="https://download.ericzimmermanstools.com/net9/SrumECmd.zip"; File="SrumECmd.zip" },
-    @{ Name="TimelineExplorer"; Url="https://download.ericzimmermanstools.com/net9/TimelineExplorer.zip"; File="TimelineExplorer.zip" },
-    @{ Name="RegisryExplorer"; Url="https://download.ericzimmermanstools.com/net9/RegistryExplorer.zip"; File="RegistryExplorer.zip.zip" }
-)
-
 $nirsoftTools = @(
     @{ Name="WinPrefetchView"; Url="https://www.nirsoft.net/utils/winprefetchview-x64.zip"; File="winprefetchview-x64.zip" },
     @{ Name="USBDeview"; Url="https://www.nirsoft.net/utils/usbdeview-x64.zip"; File="usbdeview-x64.zip" },
-    @{ Name="NetworkUsageView"; Url="https://www.nirsoft.net/utils/networkusageview-x64.zip"; File="networkusageview-x64.zip" },
-    @{ Name="AlternateStreamView"; Url="https://www.nirsoft.net/utils/alternatestreamview-x64.zip"; File="alternatestreamview-x64.zip" },
-    @{ Name="UninstallView"; Url="https://www.nirsoft.net/utils/uninstallview-x64.zip"; File="uninstallview-x64.zip" },
-    @{ Name="PreviousFilesRecovery"; Url="https://www.nirsoft.net/utils/previousfilesrecovery-x64.zip"; File="previousfilesrecovery-x64.zip" }
+
 )
 
 $otherTools = @(
@@ -193,35 +179,6 @@ $otherTools = @(
 )
 
 
-$response = Read-Host "`nDo you want to download Spokwn's tools? (Y/N)"
-if ($response -match '^[Yy]') {
-    Download-Tools -Tools $spowksucksasscheeks -CategoryName "Spokwn's"
-}
-
-$response = Read-Host "`nDo you want to download Zimmerman's tools? (Y/N)"
-if ($response -match '^[Yy]') {
-    Download-Tools -Tools $zimmermanTools -CategoryName "Zimmerman's"
-    
-    $runtimeResponse = Read-Host "`nWould you like to install the .NET Runtime (required for zimmerman) (Y/N)"
-    if ($runtimeResponse -match '^[Yy]') {
-        Download-File -Url "https://builds.dotnet.microsoft.com/dotnet/Sdk/9.0.306/dotnet-sdk-9.0.306-win-x64.exe" -FileName "dotnet-sdk-9.0.306-win-x64.exe" -ToolName ".NET Runtime"
-    }
-}
-
-$response = Read-Host "`nDo you want to download Nirsoft tools? (Y/N)"
-if ($response -match '^[Yy]') {
-    Download-Tools -Tools $nirsoftTools -CategoryName "Nirsoft"
-}
-
-Write-Host "`nNote: hayabusa might flag as a virus (its very safe n open source)" -ForegroundColor Yellow
-$response = Read-Host "Do you want to download Hayabusa? (Y/N)"
-if ($response -match '^[Yy]') {
-    Download-File -Url "https://github.com/Yamato-Security/hayabusa/releases/download/v3.6.0/hayabusa-3.6.0-win-x64.zip" -FileName "hayabusa-3.6.0-win-x64.zip" -ToolName "Hayabusa"
-}
-
-$response = Read-Host "`nDo you want to download other common tools (i couldnt think of a category)? (Y/N)"
-if ($response -match '^[Yy]') {
-    Download-Tools -Tools $otherTools -CategoryName "Other Common"
 }
 
 Write-Host "`nHit up @praiselily if u got ideas for tools to add" -ForegroundColor Cyan
